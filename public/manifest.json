@@ -6,13 +6,15 @@
   "icons": {
     "48": "icons/border-48.png"
   },
+  "permissions": [
+    "activeTab"
+  ],
   "content_scripts": [
     {
       "matches": [
         "*://*.twitch.tv/*"
       ],
       "js": [
-        "browser-polyfill.min.js",
         "content.js"
       ]
     }
