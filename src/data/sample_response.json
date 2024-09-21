@@ -1,0 +1,26 @@
+{
+  "orange": [
+    "infuser",
+    "bullet_resist_shredder",
+    "soul_shredder_bullets",
+    "pristine_emblem"
+  ],
+  "green": [
+    "shadow_weave",
+    "unstoppable",
+    "fortitude",
+    "enduring_speed"
+  ],
+  "purple": [
+    "refresher",
+    "magic_carpet",
+    "improved_cooldown",
+    "rapid_recharge"
+  ],
+  "flex": [
+    "infuser",
+    "fleetfoot",
+    "boundless_spirit",
+    "empty"
+  ]
+}

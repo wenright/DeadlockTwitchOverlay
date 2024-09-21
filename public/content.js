@@ -1,24 +1,40 @@
-// content.js
+// const browser = require('webextension-polyfill');
 
-console.log('Content file has been loaded');
+console.log('content loaded 56478126031');
 
-// Create a div element to serve as the React root
-const appDiv = document.createElement('div');
-appDiv.id = 'my-react-app-overlay';
+// Create an iframe and inject it into the page
+const iframe = document.createElement('iframe');
+iframe.src = browser.runtime.getURL('index.html');
+iframe.style.position = 'fixed';
+iframe.style.width = '100%';
+iframe.style.height = '100%';
+iframe.style.zIndex = '9999';
+iframe.id = 'my-react-iframe';
 
-// Style the div to make it an overlay
-appDiv.style.position = 'fixed';
-appDiv.style.top = '0';
-appDiv.style.right = '0';
-appDiv.style.width = '300px';
-appDiv.style.height = '100%';
-appDiv.style.zIndex = '9999';
-appDiv.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+const videoPlayer = document.querySelector('video')
+document.body.appendChild(videoPlayer);
 
-// Append the div to the body
-document.body.appendChild(appDiv);
+if (!videoPlayer) {
+  console.error('Video player not found');
+}
 
-// Now we will dynamically load the React app into this div
-const script = document.createElement('script');
-script.src = chrome.runtime.getURL('build/static/js/main.cf3dd7c1.js');  // Adjust this path based on your build folder
-document.body.appendChild(script);
+const canvas = document.createElement('frame-canvas')
+const context = canvas.getContext('2d');
+canvas.width = videoPlayer.width;
+canvas.height = videoPlayer.height;
+
+const refresh = () => {
+  context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
+  const frameData = canvas.toDataUrl('image/png');
+
+  console.log('Current frame: ');
+  console.log(frameData);
+}
+
+// Send a message to the iframe after it has loaded
+iframe.onload = function () {
+  const data = { message: 'Hello from content.js!' }; // Example data
+  iframe.contentWindow.postMessage(data, '*'); // Send data to the iframe
+};
+
+
