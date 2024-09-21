@@ -15,27 +15,30 @@ function App() {
   useEffect(() => {
     // Fetch stream items here
     setItems(sampleResponse);
+
+    window.addEventListener('message', (message) => {
+      console.log('Message recieved o7');
+      console.log(message);
+    });
   }, []);
   
   return (
-    <div className="App">
-      <header className="App-header">
-        {items ?
-          <div className="flex mt-auto mr-auto opacity-100 transition-opacity ease-in-out duration-200">
-            {Object.entries(items).map(([slot, items]) => (
-              <div className={"flex flex-wrap w-[144px] h-[144px] m-1 relative"} key={slot}>
-                {items.map((item_name, j) => (
-                  <Item name={item_name} slot={slot} key={j} />
-                ))}
-              </div>
-            ))}
-          </div>
-          :
-          <>
-            Loading...123
-          </>
-        }
-      </header>
+    <div className="fixed bottom-0 left-0">
+      {items ?
+        <div className="flex mt-auto mr-auto transition-opacity duration-200 ease-in-out opacity-0 hover:opacity-100">
+          {Object.entries(items).map(([slot, items]) => (
+            <div className={"flex flex-wrap w-[144px] h-[144px] m-1 relative"} key={slot}>
+              {items.map((item_name, j) => (
+                <Item name={item_name} slot={slot} key={j} />
+              ))}
+            </div>
+          ))}
+        </div>
+        :
+        <>
+          Loading...123
+        </>
+      }
     </div>
   );
 }
