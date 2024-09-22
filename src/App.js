@@ -37,7 +37,10 @@ function App() {
         });
     });
 
-    tf.loadLayersModel('item_classifier_model/model.json').then((data) => {
+    tf.loadLayersModel('item_classifier_model/model.json').then((data, averageConfidence) => {
+      if (averageConfidence < 90) {
+        console.log('Low average confidence. Are items viewable?');
+      }
       model.current = data;
     });
   }, []);

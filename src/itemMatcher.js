@@ -48,6 +48,8 @@ export default function findItems(base64Image, model) {
   const promise = new Promise((resolved) => {
     image.onload = () => {
       const items = {};
+      let averageConfidence = 0;
+      let numItems = 0;
       
       const tensor = tf.browser.fromPixels(image)
         .resizeNearestNeighbor([1080, 1920])
@@ -70,18 +72,26 @@ export default function findItems(base64Image, model) {
           const predictedIndex = probabilities.argMax(-1).dataSync()[0];
           const predictedClass = classNames[predictedIndex];
 
+          const confidence = probabilities.dataSync()[predictedIndex] * 100;
+
           // Print the predicted class and probability
           console.log(`Predicted class: ${predictedClass}`);
-          console.log(`Confidence: ${(probabilities.dataSync()[predictedIndex] * 100).toFixed(2)}%`);
+          console.log(`Confidence: ${confidence.toFixed(2)}%`);
 
           // Clean up memory used by tensors
           probabilities.dispose();
 
           items[color].push(predictedClass);
+
+          numItems++;
+          averageConfidence += confidence;
         }
       }
 
-      resolved(items);
+      averageConfidence /= numItems;
+      console.log(averageConfidence);
+
+      resolved(items, averageConfidence);
     };
   });
 
