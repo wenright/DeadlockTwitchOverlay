@@ -25,9 +25,9 @@ function App() {
   return (
     <div className="fixed left-0 bottom-5">
       {items ?
-        <div className="flex mt-auto mr-auto text-sm transition-opacity duration-200 ease-in-out opacity-0 hover:opacity-100">
+        <div className="flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100">
           {Object.entries(items).map(([slot, items]) => (
-            <div className={"grid grid-cols-2 gap-0.5 m-1 relative"} key={slot}>
+            <div className={"grid grid-cols-2 gap-0.5 lg:gap-1 m-1 lg:m-2 relative"} key={slot}>
               {items.map((item_name, j) => (
                 <Item name={item_name} slot={slot} key={j} />
               ))}

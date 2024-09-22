@@ -57,8 +57,8 @@ const Item = (props: ItemProps) => {
   const itemType: 'Weapon' | 'Armor' | 'Tech' = item.Slot;
   
   return (
-    <div className={`text-sm text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorLightBg[itemType]} ${colorDarkDefaultBg[itemType]}`}>
-      <img className="w-6 h-6 p-0.5 opacity-75 invert" src={"/item_images/" + name + ".png"} />
+    <div className={`text-sm lg:text-lg text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorLightBg[itemType]} ${colorDarkDefaultBg[itemType]}`}>
+      <img className="w-6 h-6 p-0.5 lg:w-9 lg:h-9 lg:p-1 opacity-75 invert" src={"/item_images/" + name + ".png"} />
       {item &&
         <div className={`absolute left-0 right-0 w-[320px] z-30 overflow-hidden rounded-md mx-0.5 my-4 bottom-full hidden group-hover/item:block text-white/65 ${colorLightBg[itemType]}`}>
           <div className="p-2">
