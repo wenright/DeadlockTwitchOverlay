@@ -1,6 +1,6 @@
 const browser = require('webextension-polyfill');
 
-console.log('content loaded 56478126031');
+const extensionOrigin = browser.runtime.getURL('');
 
 setTimeout(() => {
   // Create an iframe and inject it into the page
@@ -18,10 +18,20 @@ setTimeout(() => {
 
   // Send a message to the iframe after it has loaded
   iframe.onload = function () {
-    const data = { message: 'Hello from content.js!' }; // Example data
-    // TODO use 'moz-extension://9e149a4c-c629-4ce7-a60d-fda89a425aae' for targetOrigin?
-    iframe.contentWindow.postMessage(data, '*'); // Send data to the iframe
     console.log('iframe loaded');
+
+    window.addEventListener('message', (event) => {
+      if (event.origin !== extensionOrigin.slice(0, -1)) {
+        console.warn('parent: unexpected origin - ' + event.origin);
+        return;
+      }
+
+      if (event.data === 'requestFrame') {
+        const frameData = pullFrame();
+        // TODO targetOrigin
+        iframe.contentWindow.postMessage(frameData, '*');
+      }
+    });
   };
   
   const videoPlayer = document.querySelector('video');
@@ -39,13 +49,11 @@ setTimeout(() => {
   canvas.width = videoPlayer.videoWidth;
   canvas.height = videoPlayer.videoHeight;
   
-  const refresh = () => {
+  const pullFrame = () => {
     console.log('refreshing');
     context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
     const frameData = canvas.toDataURL('image/png');
+
+    return frameData;
   }
-  
-  setTimeout(() => {
-    refresh();
-  }, 3000);
 }, 3000);  
