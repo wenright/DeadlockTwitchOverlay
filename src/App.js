@@ -17,11 +17,10 @@ function App() {
   const model = useRef();
 
   useEffect(() => {
-    // Fetch stream items here
     setItems(emptyResponse);
-
+    
     window.addEventListener('message', (event) => {
-      // We'll request a frame from parent window, then it'll base the image here.
+      // We'll request a frame from parent window, then it'll pass the image here.
       if (event.origin !== 'https://www.twitch.tv') {
         console.warn('child: unepected origin - ' + event.origin);
         return;
@@ -44,6 +43,8 @@ function App() {
   }, []);
 
   const mouseEnter = () => {
+    console.log('Hover');
+    
     setIsHovered(true);
 
     // TODO targetOrigin
@@ -56,13 +57,12 @@ function App() {
   const mouseLeave = () => {
     setIsHovered(false);
     console.log('unHover');
-
   }
   
   return (
     <div className="fixed bottom-0 left-0">
       {items ?
-        <div className="flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100"
+        <div className="flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100 backdrop-blur"
           onMouseEnter={mouseEnter}
           onMouseLeave={mouseLeave}>
           {Object.entries(items).map(([slot, items]) => (
