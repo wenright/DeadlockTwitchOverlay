@@ -23,7 +23,7 @@ function App() {
   }, []);
   
   return (
-    <div className="fixed left-0 bottom-5">
+    <div className="fixed bottom-0 left-0">
       {items ?
         <div className="flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100">
           {Object.entries(items).map(([slot, items]) => (
