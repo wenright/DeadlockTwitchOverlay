@@ -59,7 +59,6 @@ export default function findItems(base64Image, model) {
         items[color] = [];
         
         for (const slot of slotGroup) {
-
           const startX = slot[0];
           const startY = slot[1];
           const cropWidth = slot[2] - startX;
@@ -81,7 +80,7 @@ export default function findItems(base64Image, model) {
           // Clean up memory used by tensors
           probabilities.dispose();
 
-          items[color].push(predictedClass);
+          items[color].push(confidence > 80 ? predictedClass : 'empty');
 
           numItems++;
           averageConfidence += confidence;
@@ -89,9 +88,8 @@ export default function findItems(base64Image, model) {
       }
 
       averageConfidence /= numItems;
-      console.log(averageConfidence);
 
-      resolved(items, averageConfidence);
+      resolved({items: items, averageConfidence: averageConfidence});
     };
   });
 
