@@ -11,10 +11,9 @@ console.log('Loading Deadlock Item Inspector overlay');
   
   const iframe = document.createElement('iframe');
   iframe.src = browser.runtime.getURL('index.html');
-  iframe.style.position = 'relative';
-  iframe.style.width = '100%';
-  iframe.style.height = 'calc(100% - 48px)';
-  iframe.style.marginBottom = '48px';
+  iframe.style.position = 'fixed';
+  iframe.style.bottom = '48px';
+  iframe.style.left = '0';
   iframe.style.zIndex = '9999';
   iframe.style.border = '0px';
   iframe.style.overflow = 'hidden';
