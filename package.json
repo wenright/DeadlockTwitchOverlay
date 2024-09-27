@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "browserify public/main.js -o public/content.js; react-scripts build",
+    "build": "react-scripts build; browserify public/main.js -o build/content.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
