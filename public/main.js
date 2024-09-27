@@ -1,6 +1,8 @@
 const browser = require('webextension-polyfill');
-console.log('Loading Deadlock Item Inspector overlay');
-// if (document.querySelector('[data-a-target="stream-game-link"]').innerHTML.includes('Deadlock')) {
+
+function injectOverlay() {
+  console.log('Loading Deadlock Item Inspector overlay');
+  
   const extensionOrigin = browser.runtime.getURL('');
   
   const videoPlayer = document.querySelector('video');
@@ -11,9 +13,10 @@ console.log('Loading Deadlock Item Inspector overlay');
   
   const iframe = document.createElement('iframe');
   iframe.src = browser.runtime.getURL('index.html');
-  iframe.style.position = 'fixed';
-  iframe.style.bottom = '48px';
-  iframe.style.left = '0';
+  iframe.style.position = 'relative';
+  iframe.style.width = '100%';
+  iframe.style.height = 'calc(100% - 48px)';
+  iframe.style.marginBottom = '48px';
   iframe.style.zIndex = '9999';
   iframe.style.border = '0px';
   iframe.style.overflow = 'hidden';
@@ -56,6 +59,27 @@ console.log('Loading Deadlock Item Inspector overlay');
     
     return frameData;
   }
-// } else {
-//   console.log('Streamer not currently playing Deadlock, disabling item inspector');
-// }
+}
+
+let onNewPage = true;
+let previousUrl = '';
+const observer = new MutationObserver(function (mutations) {
+  if (window.location.href !== previousUrl) {
+    previousUrl = window.location.href;
+    onNewPage = true;
+  }
+
+  if (onNewPage) {
+    const streamGame = document.querySelector('[data-a-target="stream-game-link"]');
+
+    if (streamGame) {
+      if (streamGame.innerHTML.includes('Deadlock')) {
+        injectOverlay();
+      }
+
+      onNewPage = false;
+    }
+  }
+});
+const config = { subtree: true, childList: true };
+observer.observe(document, config);
