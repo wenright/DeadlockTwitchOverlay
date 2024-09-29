@@ -1,10 +1,10 @@
 {
   "manifest_version": 2,
-  "name": "Borderify",
+  "name": "Deadlock Twitch Overlay",
   "version": "1.0",
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Allows you to hover over a twitch streamer's items to see what they do",
   "icons": {
-    "48": "icons/border-48.png"
+    "48": "souls_icon.png"
   },
   "permissions": [
     "activeTab"
