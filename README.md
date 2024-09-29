@@ -1,5 +1,7 @@
 # Deadlock item overlay
 
+https://github.com/user-attachments/assets/4c2f2214-0b91-4086-8af4-c75dd6cf1beb
+
 Lets you hover over items on Twitch streams
 
 Works by running item images through an image classifier and rendering item data from the deadlock wiki
