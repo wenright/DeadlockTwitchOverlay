@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import { useState, useEffect, useRef } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
@@ -15,7 +14,7 @@ function App() {
   const [items, setItems] = useState(emptyResponse);
   const [isHovered, setIsHovered] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
-  const model = useRef();
+  const model = useRef<tf.LayersModel>();
   const recognitionThrottle = useThrottle(300);
 
   useEffect(() => {
@@ -27,7 +26,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const messageHandler = (event) => {
+    const messageHandler = (event: { origin: string; data: any; }) => {
       // We'll request a frame from parent window, then it'll pass the image here.
       if (event.origin !== 'https://www.twitch.tv') {
         console.warn('child: unepected origin - ' + event.origin);
