@@ -9,9 +9,9 @@ Works by running item images through an image classifier and rendering item data
 ## Installation
 Currently not on the chrome/firefox web store, so it will need to be installed manually.
 Download and unzip the most recent build from [here](https://github.com/wenright/DeadlockTwitchOverlay/releases)
-Then in firefox, go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox), click "Load Temporary Add-On...", and select `manifest.json`.
+Then in firefox, go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox), click "Load Temporary Add-On...", and select `manifest.json`
 
-To build yourself, run
+To build it yourself, run
 
 `npm install`
 
