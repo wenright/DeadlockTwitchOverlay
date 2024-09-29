@@ -1,12 +1,17 @@
 # Deadlock item overlay
 
-## TODO
-* only load overlay if current game is set to deadlock
-* performance improvements
-* allow double clicking to open stream in fullscreen (prevent overlay from taking pointer events outside of small area)
-* poor item recognition for items that have cooldowns and are on cooldown
-* Currently only loads on page refresh, should also load when switching streams
+Lets you hover over items on Twitch streams
 
+Works by running item images through an image classifier and rendering item data from the deadlock wiki
+
+## Installation
+Currently not on the chrome/firefox web store, so it will need to be built and installed manually. Run `npm run build`, then in firefox, go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox) and click "Load Temporary Add-On...", and select `build/manifest.json`.
+
+## Training the model further
+Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockOverlayBackend](https://github.com/wenright/DeadlockOverlayBackend). Then, copy the files from `data/models/item_classifier_model` from that repo into `public/item_classifier_model` in this repo.
+
+## TODO
+* poor item recognition for items that have cooldowns and are on cooldown. Will need to pull some additional data to better train this.
 
 ## Item issues
 * "extra charge" shows +1% CDR instead of +1 charges

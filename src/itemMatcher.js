@@ -73,11 +73,9 @@ export default function findItems(base64Image, model) {
 
           const confidence = probabilities.dataSync()[predictedIndex] * 100;
 
-          // Print the predicted class and probability
           console.log(`Predicted class: ${predictedClass}`);
           console.log(`Confidence: ${confidence.toFixed(2)}%`);
 
-          // Clean up memory used by tensors
           probabilities.dispose();
 
           items[color].push(confidence > 80 ? predictedClass : 'empty');
