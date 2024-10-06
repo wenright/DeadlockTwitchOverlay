@@ -41,7 +41,8 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   },
   BonusAbilityCharges: {
     ...defaultUpgradeSpec,
-    readableName: 'Cooldown Reduction for Charged Abilities',
+    readableName: 'Bonus Ability Charges',
+    signSuffix: '',
   },
   ImbuedCooldownReduction: {
     ...defaultUpgradeSpec,
