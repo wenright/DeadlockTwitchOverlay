@@ -13,20 +13,15 @@ function injectOverlay() {
   
   const iframe = document.createElement('iframe');
   iframe.src = browser.runtime.getURL('index.html');
-  iframe.style.position = 'relative';
-  iframe.style.width = '100%';
-  iframe.style.height = 'calc(100% - 48px)';
+  iframe.style.position = 'absolute';
+  iframe.style.bottom = '0';
   iframe.style.marginBottom = '48px';
-  iframe.style.zIndex = '9999';
   iframe.style.border = '0px';
   iframe.style.overflow = 'hidden';
   iframe.id = 'deadlock-items-iframe';
-  console.log('loading iframe...', iframe);
   
   // Send a message to the iframe after it has loaded
   iframe.onload = function () {
-    console.log('iframe loaded');
-    
     window.addEventListener('message', (event) => {
       if (event.origin !== extensionOrigin.slice(0, -1)) {
         console.warn('parent: unexpected origin - ' + event.origin);
@@ -43,10 +38,9 @@ function injectOverlay() {
   
   videoPlayer.parentElement.appendChild(iframe);
   
-  console.log(videoPlayer.videoWidth, videoPlayer.videoHeight);
   const canvas = document.createElement('canvas');
   canvas.style.position = 'absolute';
-  canvas.style.opacity = '0%';
+  canvas.style.display = 'none';
   const context = canvas.getContext('2d');
   
   const pullFrame = () => {

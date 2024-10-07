@@ -22,7 +22,7 @@ If an update comes out that modifies item data, new data can be pulled by runnin
 
 `npm run pullItemData`
 
-Which will pull data from [https://github.hfwnet.com/deadlock-wiki/deadbot](https://github.hfwnet.com/deadlock-wiki/deadbot)
+Which will pull data from [https://github.com/deadlock-wiki/deadbot](https://github.com/deadlock-wiki/deadbot)
 
 ## Training the model further
 Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockOverlayBackend](https://github.com/wenright/DeadlockOverlayBackend). Then, copy the files from `data/models/item_classifier_model` from that repo into `public/item_classifier_model` in this repo.

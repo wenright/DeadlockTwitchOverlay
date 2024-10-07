@@ -73,12 +73,9 @@ export default function findItems(base64Image, model) {
 
           const confidence = probabilities.dataSync()[predictedIndex] * 100;
 
-          console.log(`Predicted class: ${predictedClass}`);
-          console.log(`Confidence: ${confidence.toFixed(2)}%`);
-
           probabilities.dispose();
 
-          items[color].push(confidence > 80 ? predictedClass : 'empty');
+          items[color].push(confidence > 70 ? predictedClass : 'empty');
 
           numItems++;
           averageConfidence += confidence;
