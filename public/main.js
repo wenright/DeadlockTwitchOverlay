@@ -15,6 +15,8 @@ function injectOverlay() {
   iframe.src = browser.runtime.getURL('index.html');
   iframe.style.position = 'absolute';
   iframe.style.bottom = '0';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
   iframe.style.marginBottom = '48px';
   iframe.style.border = '0px';
   iframe.style.overflow = 'hidden';
@@ -30,7 +32,6 @@ function injectOverlay() {
       
       if (event.data === 'requestFrame') {
         const frameData = pullFrame();
-        // TODO targetOrigin
         iframe.contentWindow.postMessage(frameData, '*');
       }
     });

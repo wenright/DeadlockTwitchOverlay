@@ -61,7 +61,6 @@ function App() {
     setIsHovered(true);
     setShowWelcomeMessage(false);
 
-    // TODO targetOrigin
     window.parent.postMessage('requestFrame', '*');
   }
 
