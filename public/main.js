@@ -12,15 +12,24 @@ function injectOverlay() {
   }
   
   const iframe = document.createElement('iframe');
+  iframe.id = 'deadlock-items-iframe';
   iframe.src = browser.runtime.getURL('index.html');
   iframe.style.position = 'absolute';
   iframe.style.bottom = '0';
-  iframe.style.width = '100%';
-  iframe.style.height = '100%';
   iframe.style.marginBottom = '48px';
   iframe.style.border = '0px';
   iframe.style.overflow = 'hidden';
-  iframe.id = 'deadlock-items-iframe';
+
+  iframe.style.width = '256px';
+  iframe.style.height = '64px';
+  iframe.onmouseenter = () => {
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+  }
+  iframe.onmouseleave = () => {
+    iframe.style.width = '256px';
+    iframe.style.height = '64px';
+  }
   
   // Send a message to the iframe after it has loaded
   iframe.onload = function () {
