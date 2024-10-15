@@ -29,4 +29,3 @@ Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockO
 
 ## TODO
 * poor item recognition for items that have cooldowns and are on cooldown. Will need to pull some additional data to better train this.
-* PIP mode breaks the overlay, and makes twitch UI uninteractable

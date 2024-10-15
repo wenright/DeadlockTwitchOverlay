@@ -1,5 +1,7 @@
 const browser = require('webextension-polyfill');
 
+const iframeElementName = 'deadlock-items-iframe';
+
 function injectOverlay() {
   console.log('Loading Deadlock Item Inspector overlay');
   
@@ -12,7 +14,7 @@ function injectOverlay() {
   }
   
   const iframe = document.createElement('iframe');
-  iframe.id = 'deadlock-items-iframe';
+  iframe.id = iframeElementName;
   iframe.src = browser.runtime.getURL('index.html');
   iframe.style.position = 'absolute';
   iframe.style.bottom = '0';
@@ -74,6 +76,12 @@ const observer = new MutationObserver(function (mutations) {
   }
 
   if (onNewPage) {
+    // Delete existing iframe
+    const existingIframe = document.querySelector(`#${iframeElementName}`);
+    if (existingIframe) {
+      existingIframe.remove();
+    }
+    
     const streamGame = document.querySelector('[data-a-target="stream-game-link"]');
 
     if (streamGame) {
