@@ -22,7 +22,8 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "/index.html"
+        "/index.html",
+        "/item_classifier_model/*"
       ],
       "matches": [
         "*://*.twitch.tv/*"

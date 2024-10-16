@@ -42,17 +42,15 @@ function injectOverlay() {
       }
       
       if (event.data === 'requestFrame') {
-        const frameData = pullFrame();
-        iframe.contentWindow.postMessage(frameData, '*');
+        const frameImageData = pullFrame();
+        iframe.contentWindow.postMessage(frameImageData, '*')
       }
     });
   };
   
   videoPlayer.parentElement.appendChild(iframe);
   
-  const canvas = document.createElement('canvas');
-  canvas.style.position = 'absolute';
-  canvas.style.display = 'none';
+  const canvas = new OffscreenCanvas(1920, 1080);
   const context = canvas.getContext('2d');
   
   const pullFrame = () => {
@@ -61,9 +59,7 @@ function injectOverlay() {
     canvas.height = videoPlayer.videoHeight;
     
     context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
-    const frameData = canvas.toDataURL('image/png');
-    
-    return frameData;
+    return context.getImageData(0, 0, canvas.width, canvas.height);
   }
 }
 

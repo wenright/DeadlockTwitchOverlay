@@ -2,6 +2,17 @@ import * as tf from '@tensorflow/tfjs';
 
 import classNames from "./data/class_names.json";
 
+console.log(classNames);
+
+let model = null;
+tf.loadLayersModel('/item_classifier_model/model.json')
+  .then((data) => {
+    model = data;
+  })
+  .catch(e => {
+    console.error(e);
+  });
+
 const itemSlots = {
   "orange": [
     [30, 991, 60, 1021],
@@ -29,68 +40,45 @@ const itemSlots = {
   ]
 }
 
-function displayTensorAsImage(tensor) {
-  const canvas = document.createElement('canvas');
+onmessage = (e) => {  
+  const [ image ] = e.data;
+  
+  const items = {};
+  let averageConfidence = 0;
+  let numItems = 0;
+  
+  const tensor = tf.browser.fromPixels(image)
+    .resizeNearestNeighbor([1080, 1920])
+    .expandDims();
 
-  const [batch, height, width, channels] = tensor.shape;
-  canvas.width = width;
-  canvas.height = height;
+  for (const [color, slotGroup] of Object.entries(itemSlots)) {
+    items[color] = [];
+    
+    for (const slot of slotGroup) {
+      const startX = slot[0];
+      const startY = slot[1];
+      const cropWidth = slot[2] - startX;
+      const cropHeight = slot[3] - startY;
 
-  document.body.appendChild(canvas);
+      const croppedTensor = tensor.slice([0, startY, startX, 0], [1, cropHeight, cropWidth, 3]);
 
-  tf.browser.toPixels(tensor.squeeze(), canvas);
-}
+      const predictions = model.predict(croppedTensor);
+      const probabilities = tf.softmax(predictions);
+      const predictedIndex = probabilities.argMax(-1).dataSync()[0];
+      const predictedClass = classNames[predictedIndex];
 
-export default function findItems(base64Image, model) {  
-  const image = new Image();
-  image.src = base64Image;
+      const confidence = probabilities.dataSync()[predictedIndex] * 100;
 
-  const promise = new Promise((resolved) => {
-    image.onload = () => {
-      const items = {};
-      let averageConfidence = 0;
-      let numItems = 0;
-      
-      const tensor = tf.browser.fromPixels(image)
-        .resizeNearestNeighbor([1080, 1920])
-        .expandDims();
+      probabilities.dispose();
 
-      for (const [color, slotGroup] of Object.entries(itemSlots)) {
-        items[color] = [];
-        
-        for (const slot of slotGroup) {
-          const startX = slot[0];
-          const startY = slot[1];
-          const cropWidth = slot[2] - startX;
-          const cropHeight = slot[3] - startY;
+      items[color].push(confidence > 50 ? predictedClass : 'empty');
 
-          const croppedTensor = tensor.slice([0, startY, startX, 0], [1, cropHeight, cropWidth, 3]);
+      numItems++;
+      averageConfidence += confidence;
+    }
+  }
 
-          const predictions = model.current.predict(croppedTensor);
-          const probabilities = tf.softmax(predictions);
-          const predictedIndex = probabilities.argMax(-1).dataSync()[0];
-          const predictedClass = classNames[predictedIndex];
+  averageConfidence /= numItems;
 
-          const confidence = probabilities.dataSync()[predictedIndex] * 100;
-
-          probabilities.dispose();
-
-          items[color].push(confidence > 70 ? predictedClass : 'empty');
-
-          numItems++;
-          averageConfidence += confidence;
-        }
-      }
-
-      averageConfidence /= numItems;
-
-      resolved({items: items, averageConfidence: averageConfidence});
-    };
-  });
-
-  image.onerror = () => {
-    console.error('Error parsing base64 image');
-  };
-
-  return promise;
+  postMessage({ items: items, averageConfidence: averageConfidence });
 }

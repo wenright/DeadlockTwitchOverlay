@@ -7,25 +7,33 @@ import "./hooks/useThrottle";
 import emptyResponse from "./data/empty_response.json";
 
 import './App.css';
-import findItems from './itemMatcher';
 import useThrottle from './hooks/useThrottle';
 
 function App() {
   const [items, setItems] = useState(emptyResponse);
   const [isHovered, setIsHovered] = useState(false);
   const [showWelcomeMessage, setShowWelcomeMessage] = useState(true);
-  const model = useRef<tf.LayersModel>();
+  const worker = useRef<Worker>();
   const recognitionThrottle = useThrottle(300);
 
   useEffect(() => {
+    worker.current = new Worker(new URL('itemMatcher.js', import.meta.url), { type: 'module' });
+
+    worker.current.onmessage = (event) => {
+      setItems(event.data.items);
+    }
+    
     const timer = setTimeout(() => {
       setShowWelcomeMessage(false);
     }, 3000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      worker.current?.terminate();
+      clearTimeout(timer)
+    };
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {    
     const messageHandler = (event: { origin: string; data: any; }) => {
       // We'll request a frame from parent window, then it'll pass the image here.
       if (event.origin !== 'https://www.twitch.tv') {
@@ -33,24 +41,16 @@ function App() {
         return;
       }
 
-      if (!model.current) {
-        console.error('Model not yet loaded');
-        return;
-      }
-
       recognitionThrottle(() => {
-        findItems(event.data, model)
-          .then((data) => {
-            setItems(data.items);
-          });
+        if (!worker.current) {
+          console.error('Worker not initialized');
+        }
+
+        worker.current?.postMessage([event.data]);
       });
     };
     
     window.addEventListener('message', messageHandler);
-
-    tf.loadLayersModel('item_classifier_model/model.json').then((data) => {
-      model.current = data;
-    });
 
     return () => {
       window.removeEventListener('message', messageHandler);
