@@ -4,7 +4,7 @@
   "version": "1.0",
   "description": "Allows you to hover over a twitch streamer's items to see what they do",
   "icons": {
-    "48": "souls_icon.png"
+    "128": "icon.png"
   },
   "permissions": [
     "activeTab"
