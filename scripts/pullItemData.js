@@ -78,6 +78,8 @@ fetch(dataUrl)
             if (itemName === 'magic_carpet') rename(itemData, 'FlyingBulletShield', 'BulletShieldOnCast');
             if (itemName === 'magic_carpet') rename(itemData, 'FlyingTechShield', 'SpiritShieldOnCast');
             if (itemName === 'magic_carpet') rename(itemData, 'FlyMoveSpeed', 'ConditionalMoveSpeed');
+            if (itemName === 'lucky_shot') rename(itemData, 'ProcChance', 'CritProcChance');
+            if (itemName === 'tesla_bullets') rename(itemData, 'ProcChance', 'TeslaProcChance');
 
             // Missing data from item-data.json
             if (itemName === 'frenzy') itemData['Description'] = 'While you are below 40% health, you gain stat bonuses.';

@@ -356,9 +356,13 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Weapon Damage per Kill',
   },
-  ProcChance: {
+  CritProcChance: {
     ...defaultUpgradeSpec,
     readableName: 'Crit Proc Chance',
+  },
+  TeslaProcChance: {
+    ...defaultUpgradeSpec,
+    readableName: 'Proc Chance',
   },
   CritDamagePercent: {
     ...defaultUpgradeSpec,
