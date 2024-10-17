@@ -81,7 +81,7 @@ const Item = (props: ItemProps) => {
               }
             </div>
             {item.Description &&
-              <div className={`p-1 px-2 ${colorDarkBg[itemType]}`} dangerouslySetInnerHTML={{__html: item.Description}}></div>
+              <div className={`p-1 px-2 ${colorDarkBg[itemType]}`}>{item.Description.replace(/<[^>]*>/g, '')}</div>
             }
             {Object.keys(conditionalUpgrades).some(upgrade => item[upgrade] && item[upgrade] !== '0') &&
               <div className={`p-1 ${colorDarkBg[itemType]}`}>
