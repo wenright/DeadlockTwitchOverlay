@@ -63,7 +63,7 @@ const Item = (props: ItemProps) => {
             <div className="p-2">
               <div className="text-xl text-white capitalize">{friendlyName}</div>
               <div>
-                <img src="/souls_icon.png" alt="" className="inline w-5 p-1" />
+                <img src="/icon.png" alt="" className="inline w-5 p-1" />
                 <div className="inline text-white">{item.Cost}</div>
               </div>
             </div>
