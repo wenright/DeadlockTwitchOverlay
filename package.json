@@ -13,7 +13,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build; browserify public/main.js -o build/content.js",
+    "build": "react-scripts build; browserify public/main.js -o build/content.js;",
+    "zip": "npm run build; cd build; zip -rX build.zip *; cd ..",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "pullItemData": "node scripts/pullItemData.js"

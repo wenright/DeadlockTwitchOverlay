@@ -29,5 +29,11 @@
         "*://*.twitch.tv/*"
       ]
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{A1709D0A-E378-47FB-90F3-92B7F5E04D3F}",
+      "strict_min_version": "58.0"
+    }
+  }
 }
