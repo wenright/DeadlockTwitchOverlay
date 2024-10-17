@@ -7,15 +7,16 @@ Lets you hover over items on Twitch streams
 Works by running item images through an image classifier and rendering item data from the deadlock wiki
 
 ## Installation
-Currently not on the chrome/firefox web store, so it will need to be installed manually.
-Download and unzip the most recent build from [here](https://github.com/wenright/DeadlockTwitchOverlay/releases)
-Then in firefox, go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox), click "Load Temporary Add-On...", and select `manifest.json`
 
-To build it yourself, run
+[Firefox](https://addons.mozilla.org/en-US/firefox/addon/deadlock-twitch-overlay/)
+
+## Building
 
 `npm install`
 
 `npm run build`
+
+Firefox: go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox), click "Load Temporary Add-On...", and select `manifest.json`
 
 ## Updating item data
 If an update comes out that modifies item data, new data can be pulled by running
