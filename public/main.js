@@ -61,31 +61,24 @@ function injectOverlay() {
     context.drawImage(videoPlayer, 0, 0, canvas.width, canvas.height);
     return context.getImageData(0, 0, canvas.width, canvas.height);
   }
+
+  return iframe;
 }
 
-let onNewPage = true;
-let previousUrl = '';
+// When a user navigates to a new page, we want to conditionally inject the iframe if the game is set to Deadlock
+// We know that we are at a new page, and the page has finished loading, if the game is set to something new
+let existingIframe = null;
+let previousGame = null;
 const observer = new MutationObserver(function (mutations) {
-  if (window.location.href !== previousUrl) {
-    previousUrl = window.location.href;
-    onNewPage = true;
-  }
+  const newGame = document.querySelector('[data-a-target="stream-game-link"]')?.innerText ?? null;
 
-  if (onNewPage) {
-    // Delete existing iframe
-    const existingIframe = document.querySelector(`#${iframeElementName}`);
-    if (existingIframe) {
-      existingIframe.remove();
-    }
+  if (previousGame !== newGame) {
+    previousGame = newGame;
     
-    const streamGame = document.querySelector('[data-a-target="stream-game-link"]');
+    existingIframe?.remove();
 
-    if (streamGame) {
-      if (streamGame.innerHTML.includes('Deadlock')) {
-        injectOverlay();
-      }
-
-      onNewPage = false;
+    if (newGame?.includes('Deadlock')) {
+      existingIframe = injectOverlay();
     }
   }
 });
