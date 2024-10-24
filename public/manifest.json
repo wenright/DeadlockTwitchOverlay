@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Deadlock Twitch Overlay",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Allows you to hover over a twitch streamer's items to see what they do",
   "icons": {
     "128": "icon.png"
