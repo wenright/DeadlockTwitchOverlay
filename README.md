@@ -27,6 +27,3 @@ Which will pull data from [https://github.com/deadlock-wiki/deadbot](https://git
 
 ## Training the model further
 Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockOverlayBackend](https://github.com/wenright/DeadlockOverlayBackend). Then, copy the files from `data/models/item_classifier_model` from that repo into `public/item_classifier_model` in this repo.
-
-## TODO
-* poor item recognition for items that have cooldowns and are on cooldown. Will need to pull some additional data to better train this.

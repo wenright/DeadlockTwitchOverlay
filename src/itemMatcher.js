@@ -44,8 +44,6 @@ onmessage = (e) => {
   const [ image ] = e.data;
   
   const items = {};
-  let averageConfidence = 0;
-  let numItems = 0;
   
   const tensor = tf.browser.fromPixels(image)
     .resizeNearestNeighbor([1080, 1920])
@@ -67,18 +65,11 @@ onmessage = (e) => {
       const predictedIndex = probabilities.argMax(-1).dataSync()[0];
       const predictedClass = classNames[predictedIndex];
 
-      const confidence = probabilities.dataSync()[predictedIndex] * 100;
-
       probabilities.dispose();
 
-      items[color].push(confidence > 50 ? predictedClass : 'empty');
-
-      numItems++;
-      averageConfidence += confidence;
+      items[color].push(predictedClass);
     }
   }
 
-  averageConfidence /= numItems;
-
-  postMessage({ items: items, averageConfidence: averageConfidence });
+  postMessage({ items: items });
 }
