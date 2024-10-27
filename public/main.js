@@ -70,7 +70,8 @@ function injectOverlay() {
 let existingIframe = null;
 let previousGame = null;
 const observer = new MutationObserver(function (mutations) {
-  const newGame = document.querySelector('[data-a-target="stream-game-link"]')?.innerText ?? null;
+  const newGame = document
+    .querySelector('[data-a-target="stream-game-link"],[data-a-target="video-info-game-boxart-link"]')?.innerText;
 
   if (previousGame !== newGame) {
     previousGame = newGame;
