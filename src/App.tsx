@@ -77,7 +77,7 @@ function App() {
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out opacity-0 hover:opacity-100 backdrop-blur"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded opacity-0 hover:opacity-100 backdrop-blur"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
             {Object.entries(items).map(([slot, items]) => (

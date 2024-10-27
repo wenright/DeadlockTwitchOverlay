@@ -85,10 +85,14 @@ const Item = (props: ItemProps) => {
   const itemType: 'Weapon' | 'Armor' | 'Tech' = item?.Slot ?? 'Empty';
   
   return (
-    <div className={`text-sm lg:text-lg w-6 h-6 lg:w-9 lg:h-9 text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorLightBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
+    <div className={`text-sm lg:text-lg w-6 h-6 p-1 lg:w-9 lg:h-9 text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
       {name !== 'empty' && item && 
         <>
-          <img className=" p-0.5 lg:p-1 opacity-75 invert" src={"/item_images/" + name + ".png"} alt="" />
+          <div className={`w-full h-full ${colorLightBg[itemType]}`} style={{
+            maskImage: `url(/item_images/${name}.png`,
+            maskSize: '100%',
+            maskRepeat: 'no-repeat',
+          }}></div>
           <div className={`absolute left-0 right-0 w-[320px] z-30 overflow-hidden rounded-md mx-0.5 my-4 bottom-full hidden group-hover/item:block text-white/65 ${colorLightBg[itemType]}`}>
             <div className="flex justify-between p-2">
               <div className="">
