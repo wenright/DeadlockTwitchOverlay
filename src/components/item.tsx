@@ -11,17 +11,17 @@ export const colorLightBg = {
   Empty: 'bg-zinc-500',
 };
 
+export const colorDefaultBg = {
+  Weapon: 'bg-orange-default',
+  Armor: 'bg-green-default',
+  Tech: 'bg-purple-default',
+  Empty: 'bg-zinc-500',
+};
+
 export const colorDarkBg = {
   Weapon: 'bg-orange-dark',
   Armor: 'bg-green-dark',
   Tech: 'bg-purple-dark',
-  Empty: 'bg-zinc-500',
-};
-
-export const colorDarkDefaultBg = {
-  Weapon: 'hover:bg-orange-default',
-  Armor: 'hover:bg-green-default',
-  Tech: 'hover:bg-purple-default',
   Empty: 'bg-zinc-500',
 };
 
@@ -32,7 +32,42 @@ export const colorDarkerBg = {
   Empty: 'bg-zinc-500',
 };
 
-// Reading item-data.json
+export const colorHoverDarkDefaultBg = {
+  Weapon: 'hover:bg-orange-default',
+  Armor: 'hover:bg-green-default',
+  Tech: 'hover:bg-purple-default',
+  Empty: 'bg-zinc-500',
+};
+
+const tierUpgrades = {
+  Weapon: ['', '6%', '10%', '14%', '18%'], // Bonus weapon damage
+  Armor: ['', '11%', '14%', '17%', '20%'], // Bonus max health
+  Tech: ['', '4', '8', '12', '16'],        // Bonus spirit power
+}
+const getTierDescription = (itemType: string) => {
+  switch(itemType) {
+    case 'Weapon':
+      return (
+        <>Weapon<br />Damage</>
+      )
+    case 'Armor':
+      return (
+        <>Base<br />Health</>
+      )
+    case 'Tech':
+      return (
+        <>Spirit<br />Power</>
+      )
+    default:
+      break;
+  }
+}
+const tierDescriptions = {
+  Weapon: 'Weapon Damage',
+  Armor: 'Base Health',
+  Tech: 'Spirit Power'
+}
+
 interface ItemCollection {
   [key: string]: any
 }
@@ -55,16 +90,25 @@ const Item = (props: ItemProps) => {
   const itemType: 'Weapon' | 'Armor' | 'Tech' = item?.Slot ?? 'Empty';
   
   return (
-    <div className={`text-sm lg:text-lg w-6 h-6 lg:w-9 lg:h-9 text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorLightBg[itemType]} ${colorDarkDefaultBg[itemType]}`}>
+    <div className={`text-sm lg:text-lg w-6 h-6 lg:w-9 lg:h-9 text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorLightBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
       {name !== 'empty' && item && 
         <>
           <img className=" p-0.5 lg:p-1 opacity-75 invert" src={"/item_images/" + name + ".png"} />
           <div className={`absolute left-0 right-0 w-[320px] z-30 overflow-hidden rounded-md mx-0.5 my-4 bottom-full hidden group-hover/item:block text-white/65 ${colorLightBg[itemType]}`}>
-            <div className="p-2">
-              <div className="text-xl text-white capitalize">{friendlyName}</div>
-              <div>
-                <img src="/icon.png" alt="" className="inline w-5" />
-                <div className="inline text-white align-middle">{item.Cost}</div>
+            <div className="flex justify-between p-2">
+              <div className="">
+                <div className="text-xl text-white capitalize">{friendlyName}</div>
+                <div>
+                  <img src="/icon.png" alt="" className="inline w-5" />
+                  <div className="inline text-white align-middle">{item.Cost}</div>
+                </div>
+              </div>
+
+              <div className={`w-20 rounded-sm ${colorDefaultBg[itemType]}`}>
+                <div className="p-1 text-center">+<b className="text-white">{tierUpgrades[itemType][item.Tier]}</b></div>
+                <div className={`p-1 text-center text-xs text-white ${colorDarkBg[itemType]}`}>
+                  {getTierDescription(itemType)}
+                </div>
               </div>
             </div>
             <div className={`py-2 ${colorDarkBg[itemType]}`}>

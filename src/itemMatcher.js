@@ -2,8 +2,6 @@ import * as tf from '@tensorflow/tfjs';
 
 import classNames from "./data/class_names.json";
 
-console.log(classNames);
-
 let model = null;
 tf.loadLayersModel('/item_classifier_model/model.json')
   .then((data) => {
