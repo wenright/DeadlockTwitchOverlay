@@ -100,7 +100,7 @@ const Item = (props: ItemProps) => {
                 <div className="text-xl text-white capitalize">{friendlyName}</div>
                 <div>
                   <img src="/icon.png" alt="" className="inline w-5" />
-                  <div className="inline text-white align-middle">{item.Cost}</div>
+                  <div className="inline align-middle text-blue-soul">{parseInt(item.Cost).toLocaleString('en', {useGrouping: true})}</div>
                 </div>
               </div>
 
