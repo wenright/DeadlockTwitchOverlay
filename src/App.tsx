@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import * as tf from '@tensorflow/tfjs';
 
 import Item from "./components/item";
 import "./hooks/useThrottle";
