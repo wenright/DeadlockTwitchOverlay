@@ -27,3 +27,9 @@ Which will pull data from [https://github.com/deadlock-wiki/deadbot](https://git
 
 ## Training the model further
 Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockOverlayBackend](https://github.com/wenright/DeadlockOverlayBackend). Then, copy the files from `data/models/item_classifier_model` from that repo into `public/item_classifier_model` in this repo.
+
+## TODO
+* infuser cooldown missing
+* Match empty item slot styling better
+* Don't replace items if a frame has poor quality (low bitrate, or in a different menu or something). Keep previous parse instead
+* Enchanter's barrier image doesn't show

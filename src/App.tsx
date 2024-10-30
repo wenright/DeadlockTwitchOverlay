@@ -72,8 +72,8 @@ function App() {
       {items ?
         <>
           {!isHovered && showWelcomeMessage &&
-            <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center p-2 border-2 rounded pointer-events-none animate-pulse border-zinc-300'>
-              <p className='block w-full text-center text-zinc-500'>view item details</p>
+            <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center p-2 border-2 rounded-lg pointer-events-none animate-pulse border-zinc-300'>
+              <p className='block w-full text-center text-zinc-300'>view items</p>
             </div>
           }
 

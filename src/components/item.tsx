@@ -8,35 +8,35 @@ export const colorLightBg = {
   Weapon: 'bg-orange-light',
   Armor: 'bg-green-light',
   Tech: 'bg-purple-light',
-  Empty: 'bg-zinc-500',
+  Empty: 'bg-zinc-500 opacity-25',
 };
 
 export const colorDefaultBg = {
   Weapon: 'bg-orange-default',
   Armor: 'bg-green-default',
   Tech: 'bg-purple-default',
-  Empty: 'bg-zinc-500',
+  Empty: 'bg-zinc-500 opacity-25',
 };
 
 export const colorDarkBg = {
   Weapon: 'bg-orange-dark',
   Armor: 'bg-green-dark',
   Tech: 'bg-purple-dark',
-  Empty: 'bg-zinc-500',
+  Empty: 'bg-zinc-500 opacity-25',
 };
 
 export const colorDarkerBg = {
   Weapon: 'bg-orange-darker',
   Armor: 'bg-green-darker',
   Tech: 'bg-purple-darker',
-  Empty: 'bg-zinc-500',
+  Empty: 'bg-zinc-500 opacity-25',
 };
 
 export const colorHoverDarkDefaultBg = {
-  Weapon: 'hover:bg-orange-default',
-  Armor: 'hover:bg-green-default',
-  Tech: 'hover:bg-purple-default',
-  Empty: 'bg-zinc-500',
+  Weapon: 'hover:bg-orange-dark',
+  Armor: 'hover:bg-green-dark',
+  Tech: 'hover:bg-purple-dark',
+  Empty: 'bg-zinc-500 opacity-25',
 };
 
 const tierUpgrades = {
@@ -85,7 +85,7 @@ const Item = (props: ItemProps) => {
   const itemType: 'Weapon' | 'Armor' | 'Tech' = item?.Slot ?? 'Empty';
   
   return (
-    <div className={`text-sm lg:text-lg w-6 h-6 p-1 lg:w-9 lg:h-9 text-white rounded-md group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
+    <div className={`text-sm lg:text-lg w-6 h-6 p-1 lg:w-9 lg:h-9 text-white rounded-sm group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
       {name !== 'empty' && item && 
         <>
           <div className={`w-full h-full ${colorLightBg[itemType]}`} style={{
