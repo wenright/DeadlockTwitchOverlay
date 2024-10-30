@@ -30,6 +30,4 @@ Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockO
 
 ## TODO
 * infuser cooldown missing
-* Match empty item slot styling better
 * Don't replace items if a frame has poor quality (low bitrate, or in a different menu or something). Keep previous parse instead
-* Enchanter's barrier image doesn't show

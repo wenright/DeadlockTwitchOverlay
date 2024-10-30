@@ -25,7 +25,7 @@ fetch(dataUrl)
         for(const [_, itemData] of Object.entries(jsonItemData)) {
           let itemName = itemData['Name'];
           if (itemName) {
-            itemName = itemName.toLowerCase().replaceAll(' ', '_');
+            itemName = itemName.toLowerCase().replaceAll('\'', '').replaceAll(' ', '_');
 
             if (itemName === 'infuser') renameToConditional(itemData, 'LifestealPercentHero');
             if (itemName === 'soul_shredder_bullets') renameToConditional(itemData, 'LifestealPercentHero');
