@@ -9,6 +9,7 @@ Works by running item images through an image classifier and rendering item data
 ## Installation
 
 [Firefox](https://addons.mozilla.org/en-US/firefox/addon/deadlock-twitch-overlay/)
+[Chrome](https://chromewebstore.google.com/detail/deadlock-twitch-overlay/iphdkbghhdbpjnblblfgfiliacmpocph)
 
 ## Building
 
