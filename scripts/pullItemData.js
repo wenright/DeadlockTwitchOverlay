@@ -2,7 +2,7 @@
 
 var fs = require('fs');
 
-const dataUrl = 'https://raw.githubusercontent.com/deadlock-wiki/deadbot/refs/heads/develop/output-data/json/item-data.json';
+const dataUrl = 'https://raw.githubusercontent.com/deadlock-wiki/deadlock-data/refs/heads/master/game-data/json/item-data.json';
 const saveFilePath = 'src/data/item-data.json';
 let formattedItemData = {};
 
