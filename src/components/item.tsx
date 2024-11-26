@@ -83,6 +83,8 @@ const Item = (props: ItemProps) => {
   const isTangible = (upgradeName: string) => item[upgradeName] && item[upgradeName] !== '0' && item[upgradeName] !== '0m';
 
   const itemType: 'Weapon' | 'Armor' | 'Tech' = item?.Slot ?? 'Empty';
+
+  const cooldown = item?.Cooldown ?? item?.AbilityCooldown;
   
   return (
     <div className={`text-sm lg:text-lg w-6 h-6 p-1 lg:w-9 lg:h-9 text-white rounded-sm group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
@@ -119,8 +121,8 @@ const Item = (props: ItemProps) => {
             </div>
             <div className={`text-sm flex items-center ${colorDarkerBg[itemType]}`}>
               <div className={`p-1 px-2 italic w-full`}>{item.Activation}</div>
-              {item.Cooldown && item.Cooldown !== '0' &&
-                <div className="flex p-2 bg-black opacity-90"><img className="mx-2" src="/clock-arrow.svg" width={16} height={16} alt="" /><p className="mr-6">{item.Cooldown}s</p></div>
+              {cooldown && cooldown !== '0' &&
+                <div className="flex p-2 bg-black opacity-90"><img className="mx-2" src="/clock-arrow.svg" width={16} height={16} alt="" /><p className="mr-6">{cooldown}s</p></div>
               }
             </div>
             {item.Description &&

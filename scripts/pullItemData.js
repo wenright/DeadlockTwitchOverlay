@@ -64,6 +64,10 @@ fetch(dataUrl)
             if (itemName === 'mystic_slow') renameToConditional(itemData, 'MovementSpeedSlow');
             if (itemName === 'surge_of_power') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'surge_of_power') renameToConditional(itemData, 'FireRateBonus');
+            if (itemName === 'arcane_surge') renameToConditional(itemData, 'SpiritPower');
+            if (itemName === 'arcane_surge') renameToConditional(itemData, 'TechRangeMultiplier');
+            if (itemName === 'arcane_surge') renameToConditional(itemData, 'TechRadiusMultiplier');
+            if (itemName === 'arcane_surge') renameToConditional(itemData, 'BonusFireRate');
 
             // Rename some similarly named effects
             if (itemName === 'reactive_barrier') rename(itemData, 'VexBarrierBulletMaxHealth', 'BarrierBulletMaxHealth');
@@ -88,6 +92,9 @@ fetch(dataUrl)
             if (itemName === 'superior_stamina') itemData['Description'] = 'Increases the number of Air Dashes and Air Jumps that can be performed before landing from 1 to 2';
             if (itemName === 'soul_rebirth') itemData['Description'] = 'If you die, after 4s you will respawn at your death location with partial health.';
             if (itemName === 'echo_shard') itemData['Description'] = 'Reset the cooldown of your most recently used non-ultimate ability.';
+
+            // Delete some bad data
+            if (itemName === 'spellslinger_headshots') delete itemData['ShreddersTechAmp'];
             
             if (itemData['Activation'] === 'ActivationPress' || itemData['Activation'] === 'InstantCast') {
               itemData['Activation'] = 'Active';

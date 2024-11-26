@@ -16,6 +16,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Life Steal',
   },
+  SpiritPowerGainPct: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit power per stack',
+    signSuffix: '%'
+  },
   ActiveBonusLifesteal: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Lifesteal',
@@ -415,6 +420,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Resist',
     signPrefix: '',
+  },
+  TechPowerGain: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Power',
+    signPrefix: '+',
   },
   ConditionalTechPower: {
     ...defaultUpgradeSpec,

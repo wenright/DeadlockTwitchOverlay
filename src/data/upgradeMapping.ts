@@ -112,6 +112,10 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Lifesteal',
   },
+  AbilityLifestealPercentHero: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Lifesteal',
+  },
   BulletLifestealPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Lifesteal',
@@ -211,5 +215,9 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   SlowPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Slow',
+  },
+  SlowResistancePercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Movement Slow Resist ',
   },
 }
