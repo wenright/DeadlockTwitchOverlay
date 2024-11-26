@@ -1,26 +1,26 @@
 {
   "orange": [
-    "spirit_snatch",
-    "arcane_surge",
-    "spellslinger_headshots",
-    "pristine_emblem"
+    "boundless_spirit",
+    "diviners_kevlar",
+    "escalating_exposure",
+    "mystic_reverb"
   ],
   "green": [
-    "shadow_weave",
-    "unstoppable",
-    "fortitude",
-    "enduring_speed"
+    "curse",
+    "echo_shard",
+    "magic_carpet",
+    "refresher"
   ],
   "purple": [
-    "extra_charge",
-    "magic_carpet",
-    "improved_cooldown",
-    "rapid_recharge"
+    "empty",
+    "superior_cooldown",
+    "superior_duration",
+    "surge_of_power"
   ],
   "flex": [
-    "infuser",
-    "fleetfoot",
-    "boundless_spirit",
-    "empty"
+    "torment_pulse",
+    "ethereal_shift",
+    "knockdown",
+    "silence_glyph"
   ]
 }

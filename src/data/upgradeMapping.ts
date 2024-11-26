@@ -61,6 +61,10 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Fire Rate',
     signSuffix: '%',
   },
+  BonusFireRatePlayerUnit: {
+    ...defaultUpgradeSpec,
+    readableName: 'Minions Fire Rate',
+  },
   BonusClipSizePercent: {
     ...defaultUpgradeSpec,
     readableName: 'Ammo',
@@ -68,7 +72,8 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   BonusClipSize: {
     ...defaultUpgradeSpec,
     readableName: 'Ammo',
-    signPrefix: ''
+    signPrefix: '+',
+    signSuffix: '',
   },
   BonusBulletSpeedPercent: {
     ...defaultUpgradeSpec,
@@ -86,6 +91,15 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Melee Damage',
   },
+  MeleeDistanceScale: {
+    ...defaultUpgradeSpec,
+    readableName: 'Heavy Melee Distance',
+    signPrefix: '',
+  },
+  MeleeResistPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Melee Resist',
+  },
   NonPlayerBonusWeaponPower: {
     ...defaultUpgradeSpec,
     readableName: 'Weapon Damage vs NPCs',
@@ -97,6 +111,7 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   ReloadSpeedMultipler: {
     ...defaultUpgradeSpec,
     readableName: 'Reload Time',
+    signPrefix: '',
   },
   TechPower: {
     ...defaultUpgradeSpec,
@@ -107,6 +122,10 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Power',
     signSuffix: '',
+  },
+  ShreddersTechAmp: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Amp Proc',
   },
   LifestealPercentHero: {
     ...defaultUpgradeSpec,
@@ -131,7 +150,7 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   LocalBulletArmorReduction: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Resist',
-    signSuffix: '',
+    signPrefix: '',
   },
   TechResist: {
     ...defaultUpgradeSpec,
@@ -207,10 +226,6 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Debuff Resist',
     signSuffix: '%'
-  },
-  MoveWhileShootingSpeedPenaltyReductionPercent: {
-    ...defaultUpgradeSpec,
-    readableName: 'Shooting Move Speed Penalty Reduction',
   },
   SlowPercent: {
     ...defaultUpgradeSpec,

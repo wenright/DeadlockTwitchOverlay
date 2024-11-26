@@ -4,7 +4,7 @@ import { UpgradeSpec, defaultUpgradeSpec } from "./upgradeMapping"
 export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   BonusSpirit: {
     ...defaultUpgradeSpec,
-    readableName: 'Bonus Spirit',
+    readableName: 'Bonus Spirit Power',
     signSuffix: ''
   },
   BonusSpiritWithMagicShield: {
@@ -12,7 +12,16 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Bonus Spirit With Spirit Shield',
     signSuffix: ''
   },
+  ProcBonusMagicDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bonus Spirit Damage',
+    signSuffix: ''
+  },
   ConditionalLifestealPercentHero: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Life Steal',
+  },
+  ConditionalAbilityLifestealPercentHero: {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Life Steal',
   },
@@ -29,6 +38,20 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Fire Rate',
   },
+  ConditionalBonusFireRate: {
+    ...defaultUpgradeSpec,
+    readableName: 'Fire Rate',
+    signSuffix: '%',
+  },
+  ConditionalFireRateBonus: {
+    ...defaultUpgradeSpec,
+    readableName: 'Fire Rate',
+    signSuffix: '%',
+  },
+  ConditionalFireRateSlow: {
+    ...defaultUpgradeSpec,
+    readableName: 'Fire Rate Slow',
+  },
   ActiveBonusTechPower: {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Power',
@@ -37,7 +60,8 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   HealFromHero: {
     ...defaultUpgradeSpec,
     readableName: 'Healing From Heroes',
-    signSuffix: ''
+    signPrefix: '',
+    signSuffix: '',
   },
   HealFromNPC: {
     ...defaultUpgradeSpec,
@@ -62,6 +86,12 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Damage Returned',
     signPrefix: '',
+  },
+  SpiritDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Damage',
+    signPrefix: '',
+    signSuffix: '',
   },
   MaxStacks: {
     ...defaultUpgradeSpec,
@@ -112,6 +142,10 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Stack Duration',
     signSuffix: 's'
   },
+  ReturnFireBulletResist: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Resist',
+  },
   HeadShotBonusDamage: {
     ...defaultUpgradeSpec,
     readableName: 'Head Shot Bonus Damage',
@@ -142,11 +176,6 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Cooldown Reduction While Shielded',
     signSuffix: '%',
   },
-  SlowResistancePercent: {
-    ...defaultUpgradeSpec,
-    readableName: 'Slow Resistance Percent',
-    signSuffix: '%',
-  },
   TotalHealthRegen: {
     ...defaultUpgradeSpec,
     readableName: 'Total Health Regen',
@@ -171,6 +200,10 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   BulletResistReduction: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Resist Reduction',
+  },
+  ConditionalBulletResist: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Resist',
   },
   BulletArmorReduction: {
     ...defaultUpgradeSpec,
@@ -198,6 +231,7 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   OutgoingDamagePenaltyPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Damage Penalty',
+    signPrefix: '',
     signSuffix: '%'
   },
   DamagePerChain: {
@@ -225,6 +259,7 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   DPS: {
     ...defaultUpgradeSpec,
     readableName: 'DPS',
+    signSuffix: '',
   },
   ConditionalMovespeed: {
     ...defaultUpgradeSpec,
@@ -256,22 +291,18 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: 's'
   },
-  DotHealthPercent: {
+  ConditionalTechRangeMultiplier: {
     ...defaultUpgradeSpec,
-    readableName: 'Bleed Damage',
-    signSuffix: '%/sec'
+    readableName: 'Ability Range',
   },
-  AuraRadius: {
+  ConditionalBonusAbilityDurationPercent: {
     ...defaultUpgradeSpec,
-    readableName: 'Radius',
-    signSuffix: '',
-    signPrefix: '',
+    readableName: 'Ability Duration',
   },
-  Radius: {
+  ConditionalSpiritPower: {
     ...defaultUpgradeSpec,
-    readableName: 'Radius',
+    readableName: 'Spirit Power',
     signSuffix: '',
-    signPrefix: '',
   },
   DamagePulseAmount: {
     ...defaultUpgradeSpec,
@@ -368,6 +399,7 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   TeslaProcChance: {
     ...defaultUpgradeSpec,
     readableName: 'Proc Chance',
+    signPrefix: '',
   },
   CritDamagePercent: {
     ...defaultUpgradeSpec,
@@ -404,17 +436,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   ActiveReloadPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Ammo',
-    signPrefix: '%',
   },
   MaxHealthDamage: {
     ...defaultUpgradeSpec,
     readableName: 'Max Health Damage',
     signSuffix: '%'
-  },
-  ProcBonusMagicDamage: {
-    ...defaultUpgradeSpec,
-    readableName: 'Bonus Spirit Damage',
-    signSuffix: ''
   },
   TechArmorDamageReduction: {
     ...defaultUpgradeSpec,
@@ -437,6 +463,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signSuffix: ''
   },
   TechShieldOnCast: {
+    ...defaultUpgradeSpec,
+    readableName: 'Tech Shield',
+    signSuffix: ''
+  },
+  SpiritShieldOnCast: {
     ...defaultUpgradeSpec,
     readableName: 'Tech Shield',
     signSuffix: ''
@@ -474,6 +505,22 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Spirit Shield health',
     signPrefix: '',
     signSuffix: ''
+  },
+  AuraRadius: {
+    ...defaultUpgradeSpec,
+    readableName: 'Radius',
+    signSuffix: '',
+    signPrefix: '',
+  },
+  Radius: {
+    ...defaultUpgradeSpec,
+    readableName: 'Radius',
+    signSuffix: '',
+    signPrefix: '',
+  },
+  MoveWhileShootingSpeedPenaltyReductionPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Shooting Move Speed Penalty Reduction',
   },
   DebuffDuration: {
     ...defaultUpgradeSpec,
