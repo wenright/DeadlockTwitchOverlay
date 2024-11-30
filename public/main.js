@@ -32,6 +32,11 @@ function injectOverlay() {
     iframe.style.width = '256px';
     iframe.style.height = '64px';
   }
+
+  // Add extra bottom padding for VODs to prevente overlap with UI
+  if (window.location.href.includes('twitch.tv/videos/')) {
+    iframe.style.marginBottom = '72px';
+  }
   
   // Send a message to the iframe after it has loaded
   iframe.onload = function () {
