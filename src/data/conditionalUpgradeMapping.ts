@@ -464,12 +464,12 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   },
   TechShieldOnCast: {
     ...defaultUpgradeSpec,
-    readableName: 'Tech Shield',
+    readableName: 'Spirit Shield',
     signSuffix: ''
   },
   SpiritShieldOnCast: {
     ...defaultUpgradeSpec,
-    readableName: 'Tech Shield',
+    readableName: 'Spirit Shield',
     signSuffix: ''
   },
   HealAmpReceivePenaltyPercent: {
