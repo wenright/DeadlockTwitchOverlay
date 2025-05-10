@@ -38,31 +38,6 @@ export const colorHoverDarkDefaultBg = {
   Tech: 'hover:bg-purple-dark',
   Empty: 'bg-zinc-500 opacity-25',
 };
-
-const tierUpgrades = {
-  Weapon: ['', '6%', '10%', '14%', '18%'], // Bonus weapon damage
-  Armor: ['', '11%', '14%', '17%', '20%'], // Bonus max health
-  Tech: ['', '4', '8', '12', '16'],        // Bonus spirit power
-}
-const getTierDescription = (itemType: string) => {
-  switch(itemType) {
-    case 'Weapon':
-      return (
-        <>Weapon<br />Damage</>
-      )
-    case 'Armor':
-      return (
-        <>Base<br />Health</>
-      )
-    case 'Tech':
-      return (
-        <>Spirit<br />Power</>
-      )
-    default:
-      break;
-  }
-}
-
 interface ItemCollection {
   [key: string]: any
 }
@@ -87,14 +62,10 @@ const Item = (props: ItemProps) => {
   const cooldown = item?.Cooldown ?? item?.AbilityCooldown;
   
   return (
-    <div className={`text-sm lg:text-lg w-6 h-6 p-1 lg:w-9 lg:h-9 text-white rounded-sm group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
+    <div className={`text-sm lg:text-lg w-[49px] h-[49px] text-white rounded-sm group/item flex items-center justify-center cursor-pointer ${colorDarkerBg[itemType]} ${colorHoverDarkDefaultBg[itemType]}`}>
       {name !== 'empty' && item && 
         <>
-          <div className={`w-full h-full ${colorLightBg[itemType]}`} style={{
-            maskImage: `url(/item_images/${name}.png`,
-            maskSize: '100%',
-            maskRepeat: 'no-repeat',
-          }}></div>
+          <div className={`w-full h-full ${colorLightBg[itemType]}`}></div>
           <div className={`absolute left-0 right-0 w-[320px] z-30 overflow-hidden rounded-md mx-0.5 my-4 bottom-full hidden group-hover/item:block text-white/65 ${colorLightBg[itemType]}`}>
             <div className="flex justify-between p-2">
               <div className="">
@@ -102,13 +73,6 @@ const Item = (props: ItemProps) => {
                 <div>
                   <img src="/icon.png" alt="" className="inline w-5" />
                   <div className="inline align-middle text-blue-soul">{parseInt(item.Cost).toLocaleString('en', {useGrouping: true})}</div>
-                </div>
-              </div>
-
-              <div className={`w-20 rounded-sm ${colorDefaultBg[itemType]}`}>
-                <div className="p-1 text-center">+<b className="text-white">{tierUpgrades[itemType][item.Tier]}</b></div>
-                <div className={`p-1 text-center text-xs text-white ${colorDarkBg[itemType]}`}>
-                  {getTierDescription(itemType)}
                 </div>
               </div>
             </div>

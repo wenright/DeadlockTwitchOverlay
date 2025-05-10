@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Item from "./components/item";
+import { itemSlots } from "./itemMatcher";
 import "./hooks/useThrottle";
 
-import emptyResponse from "./data/empty_response.json";
+// import emptyResponse from "./data/empty_response.json";
+import emptyResponse from "./data/sample_response.json";
+
 
 import './App.css';
 import useThrottle from './hooks/useThrottle';
@@ -68,7 +71,7 @@ function App() {
   }
   
   return (
-    <div className="fixed bottom-0 left-0">
+    <div className="">
       {items ?
         <>
           {!isHovered && showWelcomeMessage &&
@@ -77,14 +80,12 @@ function App() {
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded opacity-0 hover:opacity-100 backdrop-blur"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
-            {Object.entries(items).map(([slot, items]) => (
-              <div className={"grid grid-cols-2 gap-0.5 lg:gap-1 m-1 lg:m-2 relative"} key={slot}>
-                {items.map((item_name, j) => (
-                  <Item name={item_name} slot={slot} key={slot + item_name + j} />
-                ))}
+            {items.map((item, index) => (
+              <div className={"absolute"} style={{left: itemSlots[index][0], top: itemSlots[index][1]}} key={index + item}>
+                <Item name={item} slot={''+index} />
               </div>
             ))}
           </div>

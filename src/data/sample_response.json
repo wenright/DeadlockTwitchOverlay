@@ -1,26 +1,14 @@
-{
-  "orange": [
-    "boundless_spirit",
-    "diviners_kevlar",
-    "escalating_exposure",
-    "mystic_reverb"
-  ],
-  "green": [
-    "curse",
-    "echo_shard",
-    "magic_carpet",
-    "refresher"
-  ],
-  "purple": [
-    "empty",
-    "superior_cooldown",
-    "superior_duration",
-    "surge_of_power"
-  ],
-  "flex": [
-    "torment_pulse",
-    "ethereal_shift",
-    "knockdown",
-    "silence_glyph"
-  ]
-}
+[
+  "boundless_spirit",
+  "diviners_kevlar",
+  "escalating_exposure",
+  "mystic_reverb",
+  "curse",
+  "echo_shard",
+  "magic_carpet",
+  "refresher",
+  "empty",
+  "superior_cooldown",
+  "superior_duration",
+  "surge_of_power"
+]

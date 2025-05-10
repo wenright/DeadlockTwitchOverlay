@@ -19,11 +19,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   },
   ConditionalLifestealPercentHero: {
     ...defaultUpgradeSpec,
-    readableName: 'Spirit Life Steal',
+    readableName: 'Spirit Lifesteal',
   },
   ConditionalAbilityLifestealPercentHero: {
     ...defaultUpgradeSpec,
-    readableName: 'Spirit Life Steal',
+    readableName: 'Spirit Lifesteal',
   },
   SpiritPowerGainPct: {
     ...defaultUpgradeSpec,
