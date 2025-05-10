@@ -494,15 +494,9 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Heal Reduction Resistance',
     signSuffix: '%'
   },
-  BarrierBulletMaxHealth: {
+  VexBarrierCombatBarrier: {
     ...defaultUpgradeSpec,
-    readableName: 'Bullet Shield health',
-    signPrefix: '',
-    signSuffix: ''
-  },
-  BarrierTechMaxHealth: {
-    ...defaultUpgradeSpec,
-    readableName: 'Spirit Shield health',
+    readableName: 'Barrier',
     signPrefix: '',
     signSuffix: ''
   },

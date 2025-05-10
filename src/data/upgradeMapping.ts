@@ -214,6 +214,11 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Stamina',
     signSuffix: '',
   },
+  CombatBarrier: {
+    ...defaultUpgradeSpec,
+    readableName: 'Barrier',
+    signSuffix: '',
+  },
   StaminaCooldownReduction: {
     ...defaultUpgradeSpec,
     readableName: 'Stamina Recovery',
