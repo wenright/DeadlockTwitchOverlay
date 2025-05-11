@@ -4,9 +4,7 @@ import Item from "./components/item";
 import { itemSlots } from "./itemMatcher";
 import "./hooks/useThrottle";
 
-// import emptyResponse from "./data/empty_response.json";
-import emptyResponse from "./data/sample_response.json";
-
+import emptyResponse from "./data/empty_response.json";
 
 import './App.css';
 import useThrottle from './hooks/useThrottle';
@@ -80,7 +78,7 @@ function App() {
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur grid grid-cols-6 gap-0.5 m-0.5 opacity-0 hover:opacity-100"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded grid grid-cols-6 gap-0.5 m-0.5 opacity-0 hover:opacity-100"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
             {items.map((item, index) => (

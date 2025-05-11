@@ -26,7 +26,12 @@ fetch(dataUrl)
           let itemName = itemData['Name'];
           if (itemName) {
             itemName = itemName.toLowerCase().replaceAll('\'', '').replaceAll(' ', '_');
+            
+            // Misspelled items
+            if (itemName === 'cultlist_sacrifice') itemName = 'cultist_sacrifice';
+            if (itemName === 'enchanted_holsters') itemName = 'spellslinger';
 
+            // These effects should only apply under certain conditions
             if (itemName === 'infuser') renameToConditional(itemData, 'AbilityLifestealPercentHero');
             if (itemName === 'spirit_shredder_bullets') renameToConditional(itemData, 'AbilityLifestealPercentHero');
             if (itemName === 'burst_fire') renameToConditional(itemData, 'BonusMoveSpeed');
@@ -68,6 +73,11 @@ fetch(dataUrl)
             if (itemName === 'divine_barrier') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'ethereal_shift') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'ethereal_shift') renameToConditional(itemData, 'TechResist');
+            if (itemName === 'enchanters_emblem') renameToConditional(itemData, 'CooldownReduction');
+            if (itemName === 'enchanters_emblem') renameToConditional(itemData, 'TechPower');
+            if (itemName === 'cultist_sacrifice') renameToConditional(itemData, 'TechRangeMultiplier');
+            if (itemName === 'cultist_sacrifice') renameToConditional(itemData, 'BonusFireRate');
+            if (itemName === 'cultist_sacrifice') renameToConditional(itemData, 'BonusHealth');
 
             // // Rename some similarly named effects
             if (itemName === 'shadow_weave') rename(itemData, 'AmbushBonusFireRate', 'ActiveBonusFireRate');
@@ -86,11 +96,15 @@ fetch(dataUrl)
             if (itemName === 'restorative_locket') itemData['Description'] = 'Consume all stacks to heal target ally and replenish 2 stamina points. Can be self-cast.';
             if (itemName === 'stamina_master') itemData['Description'] = 'Increases the number of Air Dashes and Air Jumps that can be performed before landing from 1 to 2';
             if (itemName === 'echo_shard') itemData['Description'] = 'Reset the cooldown of the imbued non-ultimate ability.';
+            if (itemName === 'extended_magazine') itemData['BonusClipSizePercent'] = '25';
+            if (itemName === 'extended_magazine') itemData['WeaponPower'] = '6';
 
             // // Delete some bad data
             if (itemName === 'mystic_shot') delete itemData['Radius'];
             if (itemName === 'silencer') delete itemData['TechPower'];
             if (itemName === 'majestic_leap') delete itemData['SlowPercent'];
+            if (itemName === 'extended_magazine') delete['BonusClipSize'];
+            if (itemName === 'cultist_sacrifice') delete ['BonusAbilityCharges'];
             
             if (itemData['Activation'] === 'ActivationPress' || itemData['Activation'] === 'InstantCast') {
               itemData['Activation'] = 'Active';

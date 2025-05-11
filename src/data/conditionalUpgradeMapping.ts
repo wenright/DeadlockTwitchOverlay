@@ -422,6 +422,18 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: ''
   },
+  DeathImmunityDamageReduction: {
+    ...defaultUpgradeSpec,
+    readableName: 'Damage Reduction ',
+    signPrefix: '',
+    signSuffix: '%'
+  },
+  HealAmpReceivePenaltyPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Healing Reduction ',
+    signPrefix: '',
+    signSuffix: '%'
+  },
   ProcCooldown: {
     ...defaultUpgradeSpec,
     readableName: 'Max Frequency',
