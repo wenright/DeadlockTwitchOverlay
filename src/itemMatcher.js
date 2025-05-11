@@ -54,36 +54,32 @@ onmessage = (e) => {
   
   const [image] = e.data;
 
-  const items = {};
+  const items = [];
 
   const tensor = tf.browser.fromPixels(image)
-    .resizeNearestNeighbor([1080, 1920])
+    .resizeBilinear([1080, 1920])
     .expandDims();
 
-  for (const [color, slotGroup] of Object.entries(itemSlots)) {
-    items[color] = [];
+  for (const [index, slot] of itemSlots.entries()) {
+    const startX = slot[0];
+    const startY = slot[1];
+    const cropWidth = slot[2] - startX;
+    const cropHeight = slot[3] - startY;
+    const croppedTensor = tensor.slice([0, startY, startX, 0], [1, cropHeight, cropWidth, 3])
+      .resizeBilinear([30, 30]);
 
-    for (const slot of slotGroup) {
-      const startX = slot[0];
-      const startY = slot[1];
-      const cropWidth = slot[2] - startX;
-      const cropHeight = slot[3] - startY;
+    // Uncomment to debug image cropping
+    // displayTensorAsImage(croppedTensor);
 
-      const croppedTensor = tensor.slice([0, startY, startX, 0], [1, cropHeight, cropWidth, 3]);
+    const predictions = model.predict(croppedTensor);
+    const probabilities = tf.softmax(predictions);
+    const predictedIndex = probabilities.argMax(-1).dataSync()[0];
+    const predictedClass = classNames[predictedIndex];
 
-      // Uncomment to debug image cropping
-      // displayTensorAsImage(croppedTensor);
+    probabilities.dispose();
+    croppedTensor.dispose();
 
-      const predictions = model.predict(croppedTensor);
-      const probabilities = tf.softmax(predictions);
-      const predictedIndex = probabilities.argMax(-1).dataSync()[0];
-      const predictedClass = classNames[predictedIndex];
-
-      probabilities.dispose();
-      croppedTensor.dispose();
-
-      items[color].push(predictedClass);
-    }
+    items.push(predictedClass);
   }
 
   tensor.dispose();
