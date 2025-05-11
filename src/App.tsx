@@ -4,9 +4,7 @@ import Item from "./components/item";
 import { itemSlots } from "./itemMatcher";
 import "./hooks/useThrottle";
 
-// import emptyResponse from "./data/empty_response.json";
-import emptyResponse from "./data/sample_response.json";
-
+import emptyResponse from "./data/empty_response.json";
 
 import './App.css';
 import useThrottle from './hooks/useThrottle';
@@ -71,7 +69,7 @@ function App() {
   }
   
   return (
-    <div className="">
+    <div className="fixed bottom-0 left-0">
       {items ?
         <>
           {!isHovered && showWelcomeMessage &&
@@ -80,11 +78,11 @@ function App() {
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur grid grid-cols-6 gap-0.5 lg:gap-1 m-1 lg:m-2 opacity-0 hover:opacity-100"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
             {items.map((item, index) => (
-              <div className={"absolute"} style={{left: itemSlots[index][0], top: itemSlots[index][1]}} key={index + item}>
+              <div className='relative' key={index + item}>
                 <Item name={item} slot={''+index} />
               </div>
             ))}

@@ -500,6 +500,12 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: ''
   },
+  ConditionalBarrier: {
+    ...defaultUpgradeSpec,
+    readableName: 'Barrier',
+    signPrefix: '',
+    signSuffix: ''
+  },
   AuraRadius: {
     ...defaultUpgradeSpec,
     readableName: 'Radius',

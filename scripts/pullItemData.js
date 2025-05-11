@@ -32,6 +32,7 @@ fetch(dataUrl)
             if (itemName === 'burst_fire') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'headhunter') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'diviners_kevlar') renameToConditional(itemData, 'TechPower');
+            if (itemName === 'diviners_kevlar') renameToConditional(itemData, 'CombatBarrier');
             if (itemName === 'mystic_reverb') renameToConditional(itemData, 'MovementSpeedSlow');
             if (itemName === 'hollow_point_ward') renameToConditional(itemData, 'BaseAttackDamagePercent');
             if (itemName === 'active_reload') renameToConditional(itemData, 'BulletLifestealPercent');
