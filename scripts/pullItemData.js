@@ -98,7 +98,7 @@ fetch(dataUrl)
             if (itemName === 'counterspell') renameToConditional(itemData, 'BonusMoveSpeed');
             if (itemName === 'counterspell') renameToConditional(itemData, 'SpiritPower');
             if (itemName === 'fury_trance') renameToConditional(itemData, 'BulletResist');
-            if (itemName === 'majestic_leap') renameToConditional(itemData, 'Barrier');
+            if (itemName === 'majestic_leap') renameToConditional(itemData, 'CombatBarrier');
             if (itemName === 'trophy_collector') renameToConditional(itemData, 'BonusSprintSpeed');
             if (itemName === 'healing_tempo') renameToConditional(itemData, 'BonusFireRate');
             if (itemName === 'healing_tempo') renameToConditional(itemData, 'BonusMoveSpeed');

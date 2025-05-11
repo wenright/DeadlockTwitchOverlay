@@ -62,7 +62,7 @@ const Item = (props: ItemProps) => {
   const cooldown = item?.Cooldown ?? item?.AbilityCooldown;
   
   return (
-    <div className={`text-sm lg:text-lg w-9 h-9 p-0.5 text-white rounded-sm group/item flex items-center justify-center cursor-pointer`}>
+    <div className={`text-sm lg:text-lg w-9 h-9 lg:w-12 lg:h-12 p-0.5 text-white rounded-sm group/item flex items-center justify-center cursor-pointer`}>
       {name !== 'empty' && item && 
         <>
           <div className={`w-full h-full ${colorLightBg[itemType]} bg-cover`} style={{

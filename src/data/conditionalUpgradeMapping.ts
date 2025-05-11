@@ -359,7 +359,8 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   ConditionalMovementSpeedSlow: {
     ...defaultUpgradeSpec,
     readableName: 'Movement Slow',
-    signSuffix: '%'
+    signPrefix: '',
+    signSuffix: '%',
   },
   ConditionalSlowPercent: {
     ...defaultUpgradeSpec,
