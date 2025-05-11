@@ -72,12 +72,12 @@ function App() {
       {items ?
         <>
           {!isHovered && showWelcomeMessage &&
-            <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center p-2 border-2 rounded-lg pointer-events-none animate-pulse border-zinc-300'>
+            <div className='absolute top-0 bottom-0 left-0 right-0 flex items-center p-2 m-4 border-2 rounded-lg pointer-events-none animate-pulse border-zinc-300'>
               <p className='block w-full text-center text-zinc-300'>view items</p>
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded grid grid-cols-6 gap-0.5 m-0.5 opacity-0 hover:opacity-100"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur grid grid-cols-6 gap-0.5 m-0.5 p-1 opacity-0 hover:opacity-100"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
             {items.map((item, index) => (
