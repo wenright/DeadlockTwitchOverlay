@@ -80,7 +80,7 @@ function App() {
             </div>
           }
 
-          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur grid grid-cols-6 gap-0.5 lg:gap-1 m-1 lg:m-2 opacity-0 hover:opacity-100"
+          <div className="relative flex mt-auto mr-auto text-sm transition-opacity duration-300 ease-in-out rounded backdrop-blur grid grid-cols-6 gap-0.5 m-0.5 opacity-0 hover:opacity-100"
             onMouseEnter={mouseEnter}
             onMouseLeave={mouseLeave}>
             {items.map((item, index) => (
