@@ -21,6 +21,11 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Health Regen',
     signSuffix: '',
   },
+  OutOfCombatHealthRegen: {
+    ...defaultUpgradeSpec,
+    readableName: 'Health Regen',
+    signSuffix: '',
+  },
   MaxHealthLossPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Max Health',
@@ -79,6 +84,16 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Velocity',
   },
+  NegativeBonusBulletSpeedPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Velocity',
+    signPrefix: '',
+  },
+  NegativeStaminaRecovery: {
+    ...defaultUpgradeSpec,
+    readableName: 'Stamina Recovery',
+    signPrefix: '',
+  },
   BonusZoomPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Weapon Zoom',
@@ -94,7 +109,7 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   MeleeDistanceScale: {
     ...defaultUpgradeSpec,
     readableName: 'Heavy Melee Distance',
-    signPrefix: '',
+    signPrefix: '+',
   },
   MeleeResistPercent: {
     ...defaultUpgradeSpec,
@@ -123,6 +138,11 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Spirit Power',
     signSuffix: '',
   },
+  BonusSpiritForChargedAbilities: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bonus Spirit Power for Charged Abilities',
+    signSuffix: '',
+  },
   ShreddersTechAmp: {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Amp Proc',
@@ -138,6 +158,12 @@ export const simpleUpgrades: { [key: string]: UpgradeSpec } = {
   BulletLifestealPercent: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Lifesteal',
+  },
+  ParryCooldownReduction: {
+    ...defaultUpgradeSpec,
+    readableName: 'Parry Cooldown',
+    signPrefix: '-',
+    signSuffix: 's',
   },
   MovementSpeedSlow: {
     ...defaultUpgradeSpec,

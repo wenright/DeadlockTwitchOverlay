@@ -34,6 +34,10 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Lifesteal',
   },
+  ConditionalBulletLifestealPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Lifesteal',
+  },
   ActiveBonusFireRate: {
     ...defaultUpgradeSpec,
     readableName: 'Fire Rate',
@@ -51,6 +55,17 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   ConditionalFireRateSlow: {
     ...defaultUpgradeSpec,
     readableName: 'Fire Rate Slow',
+    signPrefix: '',
+  },
+  DeflectionPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Deflection Percent',
+    signPrefix: '',
+  },
+  BulletProcDeflectionPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'On-Hit Prevention Percent',
+    signPrefix: '',
   },
   ActiveBonusTechPower: {
     ...defaultUpgradeSpec,
@@ -60,6 +75,12 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   HealFromHero: {
     ...defaultUpgradeSpec,
     readableName: 'Healing From Heroes',
+    signPrefix: '',
+    signSuffix: '',
+  },
+  HealingPerCast: {
+    ...defaultUpgradeSpec,
+    readableName: 'Healing on Ability Cast',
     signPrefix: '',
     signSuffix: '',
   },
@@ -120,6 +141,11 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Temporary Ammo',
     signSuffix: ''
   },
+  ConditionalBonusClipSize: {
+    ...defaultUpgradeSpec,
+    readableName: 'Temporary Ammo',
+    signSuffix: ''
+  },
   ActivatedFireRate: {
     ...defaultUpgradeSpec,
     readableName: 'Fire Rate',
@@ -136,6 +162,28 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   BulletResistPerStack: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Resist per Stack',
+  },
+  BulletResistBelowThreshold: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Resist',
+  },
+  TechResistBelowThreshold: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Resist',
+  },
+  BuffBulletResist: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bullet Resist',
+  },
+  BuffTechResist: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Resist',
+  },
+  HealOnActivate: {
+    ...defaultUpgradeSpec,
+    readableName: 'HP Healed on Activate',
+    signPrefix: '',
+    signSuffix: '',
   },
   BulletResistDuration: {
     ...defaultUpgradeSpec,
@@ -171,9 +219,9 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Fire Rate While Shielded',
     signSuffix: '%',
   },
-  CooldownReductionWithShield: {
+  ConditionalCooldownReduction: {
     ...defaultUpgradeSpec,
-    readableName: 'Cooldown Reduction While Shielded',
+    readableName: 'Cooldown Reduction',
     signSuffix: '%',
   },
   TotalHealthRegen: {
@@ -187,6 +235,16 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: ''
   },
+  TechRangeMultiplierBuff: {
+    ...defaultUpgradeSpec,
+    readableName: 'Ability Range',
+  },
+  TechPowerReduction: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Power',
+    signPrefix: '',
+    signSuffix: '',
+  },
   LongRangeBonusWeaponPower: {
     ...defaultUpgradeSpec,
     readableName: 'Weapon Damage',
@@ -199,11 +257,17 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   },
   BulletResistReduction: {
     ...defaultUpgradeSpec,
+    signPrefix: '',
     readableName: 'Bullet Resist Reduction',
   },
   ConditionalBulletResist: {
     ...defaultUpgradeSpec,
     readableName: 'Bullet Resist',
+  },
+  ConditionalBulletResistReloadSpeedMultipler: {
+    ...defaultUpgradeSpec,
+    readableName: 'Reload Time',
+    signPrefix: '',
   },
   BulletArmorReduction: {
     ...defaultUpgradeSpec,
@@ -216,6 +280,7 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   },
   MagicResistReduction: {
     ...defaultUpgradeSpec,
+    signPrefix: '',
     readableName: 'Spirit Resist Reduction',
   },
   ChannelTime: {
@@ -226,6 +291,7 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   HealPercentAmount: {
     ...defaultUpgradeSpec,
     readableName: 'Heal Amount',
+    signPrefix: '',
     signSuffix: '%'
   },
   OutgoingDamagePenaltyPercent: {
@@ -259,7 +325,23 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   DPS: {
     ...defaultUpgradeSpec,
     readableName: 'DPS',
+    signPrefix: '',
     signSuffix: '',
+  },
+  MaxHealthPercentAsDPS: {
+    ...defaultUpgradeSpec,
+    readableName: 'Max Health per Second',
+    signPrefix: '',
+  },
+  ExplosionDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Explosion Damage',
+    signPrefix: '',
+    signSuffix: '',
+  },
+  BulletsBonusMagicDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Base Bullet Damage',
   },
   ConditionalMovespeed: {
     ...defaultUpgradeSpec,
@@ -307,7 +389,8 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   DamagePulseAmount: {
     ...defaultUpgradeSpec,
     readableName: 'Pulse Damage',
-    signSuffix: ''
+    signPrefix: '',
+    signSuffix: '',
   },
   DamagePulseRadius: {
     ...defaultUpgradeSpec,
@@ -315,10 +398,15 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: ''
   },
+  PercentDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Frozen Bonus Damage',
+  },
   StunDuration: {
     ...defaultUpgradeSpec,
     readableName: 'Stun Duration',
-    signSuffix: 's'
+    signPrefix: '',
+    signSuffix: 's',
   },
   TechDamagePercent: {
     ...defaultUpgradeSpec,
@@ -373,14 +461,32 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
   BaseAttackDamagePercentAtMaxDuration: {
     ...defaultUpgradeSpec,
     readableName: 'Max Weapon Damage',
-    signSuffix: ''
+    signSuffix: '%'
   },
   ShootDurationForMax: {
     ...defaultUpgradeSpec,
     readableName: 'Time for Max Damage',
     signSuffix: 's'
   },
+  BonusHeavyMeleeDamage: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bonus Heavy Damage',
+    signSuffix: '%'
+  },
+  WeaponDamagePerStack: {
+    ...defaultUpgradeSpec,
+    readableName: 'Weapon Damage per Stack',
+  },
+  DotHealthPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bleed Damage/sec',
+    signPrefix: '',
+  },
   ConditionalBaseAttackDamagePercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Weapon Damage',
+  },
+  ProcBaseAttackDamagePercent: {
     ...defaultUpgradeSpec,
     readableName: 'Weapon Damage',
   },
@@ -428,12 +534,6 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: '%'
   },
-  HealAmpReceivePenaltyPercent: {
-    ...defaultUpgradeSpec,
-    readableName: 'Healing Reduction ',
-    signPrefix: '',
-    signSuffix: '%'
-  },
   ProcCooldown: {
     ...defaultUpgradeSpec,
     readableName: 'Max Frequency',
@@ -454,15 +554,26 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Max Health Damage',
     signSuffix: '%'
   },
+  Regeneration: {
+    ...defaultUpgradeSpec,
+    readableName: 'Regeneration',
+    signPrefix: '',
+    signSuffix: 'HP/s',
+  },
   TechArmorDamageReduction: {
     ...defaultUpgradeSpec,
     readableName: 'Spirit Resist',
     signPrefix: '',
   },
+  SpiritDamageReductionProc: {
+    ...defaultUpgradeSpec,
+    readableName: 'Spirit Damage Reduction',
+    signPrefix: '',
+  },
   TechPowerGain: {
     ...defaultUpgradeSpec,
-    readableName: 'Spirit Power',
-    signPrefix: '+',
+    readableName: 'Spirit Power for You',
+    signSuffix: '',
   },
   ConditionalTechPower: {
     ...defaultUpgradeSpec,
@@ -518,6 +629,12 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     signPrefix: '',
     signSuffix: ''
   },
+  ConditionalCombatBarrier: {
+    ...defaultUpgradeSpec,
+    readableName: 'Barrier',
+    signPrefix: '',
+    signSuffix: ''
+  },
   AuraRadius: {
     ...defaultUpgradeSpec,
     readableName: 'Radius',
@@ -545,6 +662,36 @@ export const conditionalUpgrades: { [key: string]: UpgradeSpec } = {
     readableName: 'Regen Duration',
     signPrefix: '',
     signSuffix: 's'
+  },
+  StackingBonusHealth: {
+    ...defaultUpgradeSpec,
+    readableName: 'Bonus Health',
+    signSuffix: ''
+  },
+  StackingTechRangeMultiplier: {
+    ...defaultUpgradeSpec,
+    readableName: 'Ability Range',
+  },
+  StackingGoldPerMinute: {
+    ...defaultUpgradeSpec,
+    readableName: 'Souls per Minute',
+  },
+  HealOnVeil: {
+    ...defaultUpgradeSpec,
+    readableName: 'Heal',
+    signPrefix: '',
+    signSuffix: '',
+  },
+  GroundDashReductionPercent: {
+    ...defaultUpgradeSpec,
+    readableName: 'Dash Distance',
+    signPrefix: '',
+  },
+  ActiveMoveSpeedPenalty: {
+    ...defaultUpgradeSpec,
+    readableName: 'Active Movespeed Penalty',
+    signPrefix: '',
+    signSuffix: '/s',
   },
   Duration: {
     ...defaultUpgradeSpec,

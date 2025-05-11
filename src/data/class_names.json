@@ -20,7 +20,7 @@
   "colossus",
   "compress_cooldown",
   "counterspell",
-  "crippling_headhot",
+  "crippling_headshot",
   "crushing_fists",
   "cultist_sacrifice",
   "curse",
@@ -148,6 +148,6 @@
   "warp_stone",
   "weakening_headshot",
   "weapon_shielding",
-  "weighted_shot",
+  "weighted_shots",
   "witchmail"
 ]

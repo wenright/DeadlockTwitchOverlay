@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Item from "./components/item";
-import { itemSlots } from "./itemMatcher";
 import "./hooks/useThrottle";
 
 import emptyResponse from "./data/empty_response.json";
