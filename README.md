@@ -30,5 +30,9 @@ Which will pull data from [https://github.com/deadlock-wiki/deadbot](https://git
 Instructions can be found at the ML repo: [https://github.com/wenright/DeadlockOverlayBackend](https://github.com/wenright/DeadlockOverlayBackend). Then, copy the files from `data/models/item_classifier_model` from that repo into `public/item_classifier_model` in this repo.
 
 ## TODO
-* infuser cooldown missing
-* Don't replace items if a frame has poor quality (low bitrate, or in a different menu or something). Keep previous parse instead
+* Better UI to match game a little closer
+* Update nerual net and UI icons to be 49x49 instead of the old 30x30, and get more 49x49 training data
+* Find a better way to open the overlay, without getting in the way of the rest of the Twitch UI
+* Allow parsing while shop UI is open (It's the same icons, they're just bigger and moved over slightly, so this should be doable)
+* Find a better way to handle items on cooldown (maybe some image preprocessing?)
+* Add `Streaming Together - Deadlock` to the whitelist for starting the overlay
